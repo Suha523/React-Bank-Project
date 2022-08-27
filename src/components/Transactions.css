@@ -39,12 +39,17 @@
   text-align: center;
 }
 .transaction-container thead {
-  background-color: rgb(94, 122, 160);
+  background-color: black;
   color: white;
+  height: 40px;
 }
+
 .transaction-container td,
 th {
-  border-top: none;
-  border-left: none;
+  border-style: none;
   height: 30px;
+}
+
+.transaction-container tr:nth-child(even) {
+  background-color: rgb(206, 201, 201);
 }
