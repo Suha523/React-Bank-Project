@@ -1,0 +1,14 @@
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+.transaction {
+  text-transform: capitalize;
+}
+
+i {
+  color: red;
+}

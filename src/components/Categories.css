@@ -1,0 +1,45 @@
+.categories {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px;
+}
+
+.categories-container {
+  width: 100%;
+  padding: 10px;
+  margin-left: 40px;
+  border: 1px solid black;
+}
+
+@media screen and (max-width: 600px) {
+  .categories-container {
+    width: 80%;
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .categories-container {
+    width: 80%;
+    margin-left: 20px;
+  }
+}
+
+.categories-container table {
+  width: 100%;
+  text-align: center;
+}
+
+.categories-container thead {
+  background-color: rgb(94, 122, 160);
+  color: white;
+}
+
+.categories-container td,
+th {
+  border-top: none;
+  border-left: none;
+  height: 30px;
+}

@@ -1,0 +1,34 @@
+.title {
+  display: flex;
+  margin: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    margin: 15px;
+  }
+}
+
+.squair {
+  height: 30px;
+  width: 200px;
+  background-image: linear-gradient(to right, rgb(94, 122, 160), rgb(0, 0, 0));
+  padding: 5px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+.up-traiangle {
+  width: 0;
+  height: 0;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid black;
+}
+
+.down-traiangle {
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-left: 20px solid black;
+}
