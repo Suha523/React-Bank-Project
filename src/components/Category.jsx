@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Category.css";
+import "../styles/Category.css";
 export class Category extends Component {
   render() {
     let categoriesAmounts = this.props.categoriesAmounts;

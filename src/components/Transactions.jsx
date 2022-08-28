@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Transaction from "./Transaction";
 import Balance from "./Balance";
-import "./Transactions.css";
+import "../styles/Transactions.css";
 import Title from "./Title";
 
 export class Transactions extends Component {

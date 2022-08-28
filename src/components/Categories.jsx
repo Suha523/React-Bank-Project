@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Category from "./Category";
-import "./Categories.css";
+import "../styles/Categories.css";
 import Title from "./Title";
 
 export class Categories extends Component {

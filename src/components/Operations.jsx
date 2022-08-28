@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Title from "./Title";
-import "./Operations.css";
+import "../styles/Operations.css";
 
 export class Operations extends Component {
   constructor() {

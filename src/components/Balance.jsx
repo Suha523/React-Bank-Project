@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Balance.css";
+import "../styles/Balance.css";
 
 export class Balance extends Component {
   totalAmount = () => {

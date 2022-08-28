@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "./Transaction.css";
+import "../styles/Transaction.css";
 
 export class Transaction extends Component {
   deleteTransaction = () => {
