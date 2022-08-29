@@ -11,13 +11,13 @@ export class Operations extends Component {
       amount: "",
       vendor: "",
       category: "",
-      open: false,
-      allowWithdraw: false,
+      inputEmptyOpen: false,
+      allowWithdrawOpen: false,
     };
   }
 
   deposit = () => {
-    if (this.inputsValidation()) {
+    if (this.isInputsEmpty()) {
       this.handleValidationClick();
     } else {
       let transaction = this.makeTransaction();
@@ -26,7 +26,7 @@ export class Operations extends Component {
     }
   };
 
-  inputsValidation = () => {
+  isInputsEmpty = () => {
     let amount = this.state.amount;
     let vendor = this.state.vendor;
     let category = this.state.category;
@@ -37,19 +37,19 @@ export class Operations extends Component {
   };
 
   isAllowWithdraw = () => {
-    return this.props.totalAmount() - this.state.amount < 500;
+    return this.props.totalAmount() - this.state.amount > 500;
   };
 
   withdraw = () => {
-    if (this.inputsValidation()) {
+    if (this.isInputsEmpty()) {
       this.handleValidationClick();
     } else {
       let transaction = this.makeTransaction();
-      if (!this.isAllowWithdraw()) {
+      if (this.isAllowWithdraw()) {
         this.props.withdraw(transaction);
         this.handleAddClick();
       } else {
-        this.handleAllowBalance();
+        this.handleAllowWithdraw();
       }
     }
   };
@@ -59,19 +59,19 @@ export class Operations extends Component {
   };
 
   handleValidationClick = () => {
-    this.setState({ open: true });
+    this.setState({ inputEmptyOpen: true });
   };
 
-  handleAllowBalance = () => {
-    this.setState({ allowWithdraw: true });
+  handleAllowWithdraw = () => {
+    this.setState({ allowWithdrawOpen: true });
   };
 
-  handleClose = () => {
-    this.setState({ open: false });
+  handleCloseError = () => {
+    this.setState({ inputEmptyOpen: false });
   };
 
-  handleCloseAllowBalance = () => {
-    this.setState({ allowWithdraw: false });
+  handleCloseAllowWidthdraw = () => {
+    this.setState({ allowWithdrawOpen: false });
   };
 
   makeTransaction = () => {
@@ -121,16 +121,14 @@ export class Operations extends Component {
             onChange={this.handleInputs}
           ></input>
           <div className="btns">
-            <Link
-              to={this.inputsValidation() ? "/operations" : "/transactions"}
-            >
+            <Link to={this.isInputsEmpty() ? "/operations" : "/transactions"}>
               <Button variant="outlined" onClick={this.deposit}>
                 Deposit
               </Button>
             </Link>
             <Link
               to={
-                this.inputsValidation() || this.isAllowWithdraw()
+                this.isInputsEmpty() || !this.isAllowWithdraw()
                   ? "/operations"
                   : "/transactions"
               }
@@ -142,12 +140,12 @@ export class Operations extends Component {
           </div>
         </form>
         <Snackbar
-          open={this.state.open}
+          open={this.state.inputEmptyOpen}
           autoHideDuration={3000}
-          onClose={this.handleClose}
+          onClose={this.handleCloseError}
         >
           <Alert
-            onClose={this.handleClose}
+            onClose={this.handleCloseError}
             severity="error"
             sx={{ width: "100%" }}
           >
@@ -156,12 +154,12 @@ export class Operations extends Component {
         </Snackbar>
 
         <Snackbar
-          open={this.state.allowWithdraw}
+          open={this.state.allowWithdrawOpen}
           autoHideDuration={3000}
-          onClose={this.handleCloseAllowBalance}
+          onClose={this.handleCloseAllowWidthdraw}
         >
           <Alert
-            onClose={this.handleCloseAllowBalance}
+            onClose={this.handleCloseAllowWidthdraw}
             severity="error"
             sx={{ width: "100%" }}
           >
