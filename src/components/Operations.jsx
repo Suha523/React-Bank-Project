@@ -122,7 +122,7 @@ export class Operations extends Component {
           ></input>
           <div className="btns">
             <Link to={this.isInputsEmpty() ? "/operations" : "/transactions"}>
-              <Button variant="outlined" onClick={this.deposit}>
+              <Button variant="contained" color="info" onClick={this.deposit}>
                 Deposit
               </Button>
             </Link>
@@ -133,7 +133,7 @@ export class Operations extends Component {
                   : "/transactions"
               }
             >
-              <Button variant="outlined" onClick={this.withdraw}>
+              <Button variant="contained" color="info" onClick={this.withdraw}>
                 Withdraw
               </Button>
             </Link>

@@ -44,8 +44,7 @@
   }
 }
 
-input,
-button {
+input {
   height: 30px;
   margin: 10px;
   border-radius: 5px;
@@ -54,4 +53,5 @@ button {
 .btns {
   display: flex;
   justify-content: center;
+  gap: 20px;
 }
