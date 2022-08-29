@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../styles/Balance.css";
 
 export class Balance extends Component {
+  
   totalAmount = () => {
     return this.props.totalAmount();
   };

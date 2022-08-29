@@ -7,12 +7,14 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Categories from "./components/Categories";
 import Header from "./components/Header";
+import { Snackbar, Alert } from "@mui/material";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       transactions: [],
+      open: false,
     };
   }
 
@@ -20,9 +22,10 @@ class App extends Component {
     let transactions = this.state.transactions;
     let amounts = transactions.map((t) => t.amount);
     let totalAmount = 0;
-    for (let amount of amounts) {
-      totalAmount += amount;
-    }
+    totalAmount = amounts.reduce(
+      (a, totalAmount) => (a += totalAmount),
+      totalAmount
+    );
     return totalAmount;
   };
 
@@ -46,6 +49,14 @@ class App extends Component {
           transactions: [...this.state.transactions, transaction],
         });
       });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
+  handleClick = () => {
+    this.setState({ open: true });
   };
 
   deleteTransaction = (transactionId) => {
@@ -100,6 +111,8 @@ class App extends Component {
                   transactions={this.state.transactions}
                   deposit={this.deposit}
                   withdraw={this.withdraw}
+                  handleClick={this.handleClick}
+                  totalAmount={this.totalAmount}
                 />
               )}
             ></Route>
@@ -110,6 +123,19 @@ class App extends Component {
                 <Categories transactions={this.state.transactions} />
               )}
             ></Route>
+            <Snackbar
+              open={this.state.open}
+              autoHideDuration={3000}
+              onClose={this.handleClose}
+            >
+              <Alert
+                onClose={this.handleClose}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                The operation is done successfully!
+              </Alert>
+            </Snackbar>
           </div>
         </Router>
       </div>

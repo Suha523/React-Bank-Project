@@ -3,7 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../styles/Transaction.css";
 
 export class Transaction extends Component {
-  deleteTransaction = () => {
+    deleteTransaction = () => {
     this.props.deleteTransaction(this.props.transaction._id);
   };
 
