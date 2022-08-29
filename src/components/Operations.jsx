@@ -37,7 +37,8 @@ export class Operations extends Component {
   };
 
   isAllowWithdraw = () => {
-    return this.props.totalAmount() - this.state.amount > 500;
+    const MIN_BALANCE = 500;
+    return this.props.totalAmount() - this.state.amount > MIN_BALANCE;
   };
 
   withdraw = () => {

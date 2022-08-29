@@ -9,10 +9,11 @@ export class Balance extends Component {
 
   render() {
     let balance = this.totalAmount();
+    const MIN_BALANNCE = 500
     return (
       <div>
         The Balance: $
-        {balance < 500 ? (
+        {balance < MIN_BALANNCE ? (
           <span className="red">{balance}</span>
         ) : (
           <span className="green">{balance}</span>

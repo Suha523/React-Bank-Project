@@ -13,17 +13,25 @@ router.get("/transactions", function (req, res) {
 });
 
 router.post("/transaction", function (req, res) {
-  let transaction = req.body;
-  let newTransaction = new Transaction(transaction);
-  newTransaction.save();
-  res.send(newTransaction);
+  try {
+    let transaction = req.body;
+    let newTransaction = new Transaction(transaction);
+    newTransaction.save();
+    res.send(newTransaction);
+  } catch (err) {
+    res.send(err);
+  }
 });
 
 router.delete("/transaction/:transactionId", function (req, res) {
   let transactionId = req.params.transactionId;
-  Transaction.findByIdAndDelete(transactionId, function (err, transaction) {
-    res.send(transaction);
-  });
+  try {
+    Transaction.findByIdAndDelete(transactionId, function (err, transaction) {
+      res.send(transaction);
+    });
+  } catch (err) {
+    res.send(err);
+  }
 });
 
 module.exports = router;
