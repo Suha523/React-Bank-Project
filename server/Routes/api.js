@@ -30,7 +30,7 @@ router.delete("/transaction/:transactionId", function (req, res) {
       res.send(transaction);
     });
   } catch (err) {
-    res.send(err);
+     res.send({"error": "id is not exists"});
   }
 });
 

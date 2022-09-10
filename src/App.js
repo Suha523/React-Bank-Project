@@ -70,6 +70,9 @@ class App extends Component {
         );
         transactions.splice(transactionIndex, 1);
         this.setState({ ...this.state, transactions });
+      })
+      .catch(function (error) {
+        alert(error);
       });
   };
 
@@ -95,12 +98,15 @@ class App extends Component {
               exact
               path="/transactions"
               render={() => (
-                <Transactions
-                  transactions={this.state.transactions}
-                  deleteTransaction={this.deleteTransaction}
-                  getTransactions={this.getTransactions}
-                  totalAmount={this.totalAmount}
-                />
+                <div>
+                  <Transactions
+                    transactions={this.state.transactions}
+                    deleteTransaction={this.deleteTransaction}
+                    getTransactions={this.getTransactions}
+                    totalAmount={this.totalAmount}
+                  />
+                  {/* <Categories transactions={this.state.transactions} /> */}
+                </div>
               )}
             ></Route>
             <Route
